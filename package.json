@@ -1,5 +1,5 @@
 {
-  "name": "20-backend-203-express-advanced-vsteschenko",
+  "name": "chat_express",
   "version": "1.0.0",
   "description": "- Repository: `lokkeroom` - Type of Challenge: `Consolidation` - Duration: `5 days` - Deployment strategy : `Heroku` - Team challenge : `solo`",
   "main": "server.js",
