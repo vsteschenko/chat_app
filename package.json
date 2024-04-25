@@ -4,7 +4,7 @@
   "description": "- Repository: `lokkeroom` - Type of Challenge: `Consolidation` - Duration: `5 days` - Deployment strategy : `Heroku` - Team challenge : `solo`",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
