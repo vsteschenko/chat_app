@@ -45,6 +45,4 @@ app.patch('/lobby/:id/myMessages/:messageId', ensureToken, editMessage)
 app.delete('/lobby/:id/myMessages/:messageId', ensureToken, deleteMessageFromLobby);
 
 
-app.listen(PORT, () => {
-    console.log(`Running server on ${PORT} port`)
-});
+app.listen(process.env.PORT || PORT);
