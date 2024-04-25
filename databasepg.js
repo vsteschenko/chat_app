@@ -1,11 +1,18 @@
 const {Client} = require('pg');
 
+// const client = new Client({
+//     host: process.env.DATABASE_URL,
+//     user: "slavasito",
+//     port: 5432,
+//     password: "q4J@Sxe5$!%QXd",
+//     database: "lobby"
+// });
+
 const client = new Client({
-    host: process.env.DATABASE_URL,
-    user: "slavasito",
-    port: 5432,
-    password: "q4J@Sxe5$!%QXd",
-    database: "lobby"
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 client.connect();
