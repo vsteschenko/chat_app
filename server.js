@@ -28,7 +28,9 @@ app.get('/lobby/:id/users', ensureToken, getUsers);
 app.get('/lobby/:id/messages', ensureToken, getLobbyMessages); 
 app.get('/lobby/:id/myMessages', ensureToken, getDms);
 app.get('/myMessages', ensureToken, getMyPrivateMessages);
-
+app.get('/info', (req, res) => {
+    res.send("Hello Arakis!")
+});
 
 app.post('/register', register);
 app.post('/login', login);
