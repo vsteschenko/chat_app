@@ -12,8 +12,12 @@ const { writeMessage, addUser, directMessage, register, login, createNewLobby, j
 const { getUsers, getLobbyMessages, getDms, getMyPrivateMessages } = require('./routes/get');
 const { editMessage } = require('./routes/patch');
 const { deleteMessageFromLobby } = require('./routes/delete');
+const cors = require('cors');
 
 const app = express();
+app.use(cors({
+  allowedHeaders: ['Authorization']
+}));
 app.use(express.json());
 // app.use(
 //     limitter({
