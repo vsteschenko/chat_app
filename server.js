@@ -15,23 +15,23 @@ const { deleteMessageFromLobby } = require('./routes/delete');
 const cors = require('cors');
 
 const app = express();
-app.use(cors({
-  origin: '*', // Allow all origins
-  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// app.use(cors({
+//   origin: '*', // Allow all origins
+//   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// }));
 app.use(express.json());
 // app.use(
 //     limitter({
 //     windowMs: 5000,
 //     max: 10
 // }));
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-//   });
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 const PORT = 3000;
 const SECRET_KEY = process.env.SECRET_KEY;
