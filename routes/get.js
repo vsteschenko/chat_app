@@ -34,8 +34,7 @@ const getLobbyMessages = async(req, res) => {
         } else {
             //get all messages from this lobby
             try {
-                client.query(`SELECT * FROM message WHERE lobby_id = $1`, [id], 
-                (err, result) => {
+                client.query(`SELECT message.*, users.email FROM message LEFT JOIN users ON message.user_id = users.user_id WHERE message.lobby_id = $1`, [id], (err, result) => {
                     if (!err) {
                         res.send(result.rows);
                     } else {
