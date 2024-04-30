@@ -102,4 +102,22 @@ const getMyPrivateMessages = async(req, res) => {
     }
 };
 
-module.exports = { getUsers, getLobbyMessages, getDms, getMyPrivateMessages };
+const getAllLobbies = async(req, res) => {
+    jwt.verify(req.token, SECRET_KEY, (err, data) => {
+        if(err) {
+            res.status(403).send('пердёж')
+        } else {
+            client.query(`SELECT * FROM lobby`, 
+            (err, result) => {
+                if (!err) {
+                    res.send(result.rows);
+                } else {
+                    console.log(err)
+                    return false
+                }
+            })
+        }
+    });
+};
+
+module.exports = { getUsers, getLobbyMessages, getDms, getMyPrivateMessages, getAllLobbies };

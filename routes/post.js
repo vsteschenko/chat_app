@@ -123,7 +123,8 @@ const login = async(req, res) => {
             //Issue a jwt token
             const token = await sign({ 
                 user_id: queryToSelectPassFromDb.rows[0].user_id,
-                email: queryToSelectPassFromDb.rows[0].email
+                email: queryToSelectPassFromDb.rows[0].email,
+                role: queryToSelectPassFromDb.rows[0].role
             }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '1h' });
             res.json({ 
                 'permission status': 'allowed',
