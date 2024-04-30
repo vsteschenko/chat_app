@@ -20,7 +20,7 @@ const createLobby = async (userEmail) => {
             await client.query(`INSERT INTO lobby (admin) VALUES ('${role.user_id}')`);
         } else {
             console.log('this user is not admin and is not allowed to create a lobby');
-            res.send("this user is not admin and is not allowed to create a lobby")
+            //res.send("this user is not admin and is not allowed to create a lobby")
         }
     } catch (err) {
         console.error('Error in createLobby:', err);
