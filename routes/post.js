@@ -180,19 +180,21 @@ const createNewLobbyAndPostMessage = async(req, res) => {
             res.status(403).send('пердёж')
         } else {
             const decodedToken = jwt.decode(req.token);
-            createLobby(decodedToken.email);
-            try {
-                const result = await client.query(`SELECT lobby_id FROM lobby`);
-                const lobbyId = result.rows[result.rows.length - 1].lobby_id + 1;
-                console.log(lobbyId);
-                client.query(`INSERT INTO message (lobby_id, user_id, text) VALUES ($1, $2, $3)`, [lobbyId, decodedToken.user_id, `${decodedToken.email} created lobby`]);
-                res.send(`${decodedToken.email} created lobby`);
-            } catch (err) {
-                console.log(err);
-                throw err;
-            }
+            if (createLobby(decodedToken.email) === 'allowed') {
+                try {
+                    const result = await client.query(`SELECT lobby_id FROM lobby`);
+                    const lobbyId = result.rows[result.rows.length - 1].lobby_id + 1;
+                    console.log(lobbyId);
+                    client.query(`INSERT INTO message (lobby_id, user_id, text) VALUES ($1, $2, $3)`, [lobbyId, decodedToken.user_id, `${decodedToken.email} created lobby`]);
+                    res.send(`${decodedToken.email} created lobby`);
+                } catch (err) {
+                    console.log(err);
+                    throw err;
+                }
+            } else {
+                res.send("You aren't admin")
         }
-    })   
+    }})   
 };
 
 
