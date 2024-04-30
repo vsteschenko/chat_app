@@ -182,10 +182,10 @@ const createNewLobbyAndPostMessage = async(req, res) => {
             const decodedToken = jwt.decode(req.token);
             createLobby(decodedToken.email);
             try {
-                const result = await client.query(`SELECT lobby_id FROM users WHERE email LIKE $1`, [decodedToken.email]);
-                const lobbyId = result.rows[0].lobby_id;
-                console.log('DB updated');
-                await client.query(`INSERT INTO message (lobby_id, user_id, text) VALUES ($1, $2, $3)`, [lobbyId, decodedToken.user_id, `${decodedToken.email} created lobby`]);
+                const result = await client.query(`SELECT lobby_id FROM lobby`);
+                const lobbyId = result.rows[result.rows.length - 1].lobby_id + 1;
+                console.log(lobbyId);
+                client.query(`INSERT INTO message (lobby_id, user_id, text) VALUES ($1, $2, $3)`, [lobbyId, decodedToken.user_id, `${decodedToken.email} created lobby`]);
                 res.send(`${decodedToken.email} created lobby`);
             } catch (err) {
                 console.log(err);
