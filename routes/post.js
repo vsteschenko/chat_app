@@ -174,4 +174,26 @@ const joinLobby = async(req, res) => {
     })
 };
 
-module.exports = { writeMessage, addUser, directMessage, register, login, createNewLobby, joinLobby };  
+const createNewLobbyAndPostMessage = async(req, res) => {
+    jwt.verify(req.token, SECRET_KEY, async(err,data) => {
+        if(err) {
+            res.status(403).send('пердёж')
+        } else {
+            const decodedToken = jwt.decode(req.token);
+            createLobby(decodedToken.email);
+            try {
+                const result = await client.query(`SELECT lobby_id FROM users WHERE email LIKE $1`, [decodedToken.email]);
+                const lobbyId = result.rows[0].lobby_id;
+                console.log('DB updated');
+                await client.query(`INSERT INTO message (lobby_id, user_id, text) VALUES ($1, $2, $3)`, [lobbyId, decodedToken.user_id, `${decodedToken.email} created lobby`]);
+                res.send(`${decodedToken.email} created lobby`);
+            } catch (err) {
+                console.log(err);
+                throw err;
+            }
+        }
+    })   
+};
+
+
+module.exports = { writeMessage, addUser, directMessage, register, login, createNewLobby, joinLobby, createNewLobbyAndPostMessage };  

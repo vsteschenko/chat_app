@@ -8,7 +8,7 @@ const { client, doQuery, selectEmail, query} = require('./databasepg');
 const { ensureToken } = require('./jwt');
 const { promisify } = require('util');
 const { checkRole, createLobby } = require('./admin');
-const { writeMessage, addUser, directMessage, register, login, createNewLobby, joinLobby } = require('./routes/post');
+const { writeMessage, addUser, directMessage, register, login, createNewLobby, joinLobby, createNewLobbyAndPostMessage } = require('./routes/post');
 const { getUsers, getLobbyMessages, getDms, getMyPrivateMessages, getAllLobbies, getMyLobbies } = require('./routes/get');
 const { editMessage } = require('./routes/patch');
 const { deleteMessageFromLobby } = require('./routes/delete');
@@ -55,7 +55,7 @@ app.post('/lobby/:id/join', ensureToken, joinLobby);
 app.post('/lobby/:id/writeMessage', ensureToken, writeMessage);
 app.post('/lobby/:id/addUser', ensureToken, addUser);
 app.post('/directMessage/:userEmail', ensureToken, directMessage);
-
+app.post('/createNewLobbyAndPostMessage', ensureToken, createNewLobbyAndPostMessage);
 
 app.patch('/lobby/:id/myMessages/:messageId', ensureToken, editMessage)
 
