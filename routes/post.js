@@ -127,7 +127,7 @@ const login = async(req, res) => {
                 role: queryToSelectPassFromDb.rows[0].role
             }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '1h' });
             res.json({ 
-                'permission status': 'allowed',
+                permission: 'allowed',
                 token: token
             })
         } else {
