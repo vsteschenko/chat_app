@@ -120,4 +120,26 @@ const getAllLobbies = async(req, res) => {
     });
 };
 
-module.exports = { getUsers, getLobbyMessages, getDms, getMyPrivateMessages, getAllLobbies };
+const getMyLobbies = async(req, res) => {
+    const decodedToken = jwt.decode(req.token);
+    const userId = await query('SELECT user_id FROM users WHERE email = $1',[decodedToken.email]);
+    jwt.verify(req.token, SECRET_KEY, (err, data) => {
+        if(err) {
+            res.status(403).send('пердёж')
+        } else {
+            client.query(`SELECT * FROM message WHERE user_id = $1`, [userId], 
+            (err, result) => {
+                if (!err) {
+                    const lobbyIds = result.rows.map((row) => row.lobby_id);
+                    const uniqueLobbyIds = [...new Set(lobbyIds)];
+                    res.status(200).send(uniqueLobbyIds);
+                } else {
+                    console.log(err)
+                    return false
+                }
+            })
+        }
+    });
+};
+
+module.exports = { getUsers, getLobbyMessages, getDms, getMyPrivateMessages, getAllLobbies, getMyLobbies };

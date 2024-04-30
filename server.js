@@ -9,7 +9,7 @@ const { ensureToken } = require('./jwt');
 const { promisify } = require('util');
 const { checkRole, createLobby } = require('./admin');
 const { writeMessage, addUser, directMessage, register, login, createNewLobby, joinLobby } = require('./routes/post');
-const { getUsers, getLobbyMessages, getDms, getMyPrivateMessages, getAllLobbies } = require('./routes/get');
+const { getUsers, getLobbyMessages, getDms, getMyPrivateMessages, getAllLobbies, getMyLobbies } = require('./routes/get');
 const { editMessage } = require('./routes/patch');
 const { deleteMessageFromLobby } = require('./routes/delete');
 const cors = require('cors');
@@ -42,6 +42,7 @@ app.get('/lobby/:id/messages', ensureToken, getLobbyMessages);
 app.get('/lobby/:id/myMessages', ensureToken, getDms);
 app.get('/myMessages', ensureToken, getMyPrivateMessages);
 app.get('/lobbies', ensureToken, getAllLobbies);
+app.get('/mylobbies', ensureToken, getMyLobbies);
 app.get('/info', (req, res) => {
     res.json({message:"Hello Arakis!"})
 });
