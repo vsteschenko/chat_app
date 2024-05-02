@@ -188,7 +188,10 @@ const createNewLobbyAndPostMessage = async(req, res) => {
                     console.log(decodedToken.user_id);
                     console.log(decodedToken.email);
                     await client.query(`INSERT INTO message (lobby_id, user_id, text) VALUES ($1, $2, $3)`, [lobbyId, decodedToken.user_id, `${decodedToken.email} created lobby`]);
-                    res.send(`${decodedToken.email} created lobby`);
+                    res.send({ 
+                        "lobby": lobbyId,
+                        "message": `${decodedToken.email} created lobby`
+                    });
                 } catch (err) {
                     console.log(err);
                     throw err;
