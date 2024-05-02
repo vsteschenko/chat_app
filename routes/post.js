@@ -20,7 +20,12 @@ const writeMessage = async(req, res) => {
                 res.status(403).send('пердёж')
             } else {
                 query(`INSERT INTO message (lobby_id, user_id, text) VALUES ($1, $2, $3) RETURNING *`, [id, userId, text]);
-                res.send(`${decodedToken.email} published a message`);
+                res.send({
+                    "lobby": id,
+                    "userId": userId,
+                    "email": decodedToken.email,
+                    "message": text
+                });
             }
         })
     } catch(err) {
