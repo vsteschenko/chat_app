@@ -43,7 +43,7 @@ app.post('/createLobby', ensureToken, createNewLobby);
 app.post('/lobby/:id/join', ensureToken, joinLobby);
 app.post('/lobby/:id/writeMessage', ensureToken, writeMessage);
 app.post('/lobby/:id/addUser', ensureToken, addUser);
-app.post('/directMessage/:userEmail', ensureToken, directMessage);
+app.post('/directMessage', ensureToken, directMessage);
 app.post('/createNewLobbyAndPostMessage', ensureToken, createNewLobbyAndPostMessage);
 
 app.patch('/lobby/:id/myMessages/:messageId', ensureToken, editMessage)
