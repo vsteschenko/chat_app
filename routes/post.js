@@ -72,7 +72,7 @@ const addUser = async(req, res) => {
 };
 
 const directMessage = async(req, res) => {
-    //const { userEmail } = req.params;//кому отправляю
+    //const { userEmail } = req.params
     const { text, userEmail } = req.body; //сообщение
     const decodedToken = jwt.decode(req.token);
     const receiverId = await query('SELECT user_id FROM users WHERE email = $1',[userEmail]);
