@@ -9,7 +9,7 @@ This is backend side built with express for my lokkeroom challange. It's running
 1.**Get Users in a Lobby**
 URL: /lobby/:id/users
 Description: Retrieves a list of users in a specified lobby.
-Auth Required: Yes
+Auth Required: Yes  
 2.**Get Messages in a Lobby**
 URL: /lobby/:id/messages
 Description: Retrieves all messages from a specified lobby.
