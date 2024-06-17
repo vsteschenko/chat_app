@@ -6,7 +6,7 @@ This is backend side built with express for my lokkeroom challange. It's running
 
 # GET Endpoints
 
-# Get Users in a Lobby
+** Get Users in a Lobby **
 URL: /lobby/:id/users
 Description: Retrieves a list of users in a specified lobby.
 Auth Required: Yes
