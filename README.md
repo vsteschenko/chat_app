@@ -6,31 +6,31 @@ This is backend side built with express for my lokkeroom challange. It's running
 
 # GET
 
-1.**Get Users in a Lobby**
-URL: /lobby/:id/users
-Description: Retrieves a list of users in a specified lobby.
+1.**Get Users in a Lobby**  
+URL: /lobby/:id/users  
+Description: Retrieves a list of users in a specified lobby.  
 Auth Required: Yes  
-2.**Get Messages in a Lobby**
-URL: /lobby/:id/messages
-Description: Retrieves all messages from a specified lobby.
-Auth Required: Yes
-3.**Get My Direct Messages in a Lobby**
-URL: /lobby/:id/myMessages
-Description: Retrieves the user's direct messages in a specified lobby.
-Auth Required: Yes
-**Get My Private Messages**
-URL: /myMessages
-Description: Retrieves the user's private messages.
-Auth Required: Yes
-4.**Get All Lobbies**
-URL: /lobbies
-Description: Retrieves a list of all lobbies.
-Auth Required: Yes
-5.**Get My Lobbies**
-URL: /mylobbies
-Description: Retrieves a list of lobbies the user is part of.
-Auth Required: Yes
-POST Endpoints
+2.**Get Messages in a Lobby**  
+URL: /lobby/:id/messages  
+Description: Retrieves all messages from a specified lobby.  
+Auth Required: Yes  
+3.**Get My Direct Messages in a Lobby**  
+URL: /lobby/:id/myMessages  
+Description: Retrieves the user's direct messages in a specified lobby.  
+Auth Required: Yes  
+**Get My Private Messages**  
+URL: /myMessages  
+Description: Retrieves the user's private messages.  
+Auth Required: Yes  
+4.**Get All Lobbies** 
+URL: /lobbies  
+Description: Retrieves a list of all lobbies.  
+Auth Required: Yes  
+5.**Get My Lobbies**  
+URL: /mylobbies  
+Description: Retrieves a list of lobbies the user is part of.  
+Auth Required: Yes  
+POST Endpoints  
 
 # POST
 
