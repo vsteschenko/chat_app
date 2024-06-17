@@ -6,15 +6,15 @@ This is backend side built with express for my lokkeroom challange. It's running
 
 # GET
 
-**Get Users in a Lobby**
+1.**Get Users in a Lobby**
 URL: /lobby/:id/users
 Description: Retrieves a list of users in a specified lobby.
 Auth Required: Yes
-**Get Messages in a Lobby**
+2.**Get Messages in a Lobby**
 URL: /lobby/:id/messages
 Description: Retrieves all messages from a specified lobby.
 Auth Required: Yes
-**Get My Direct Messages in a Lobby**
+3.**Get My Direct Messages in a Lobby**
 URL: /lobby/:id/myMessages
 Description: Retrieves the user's direct messages in a specified lobby.
 Auth Required: Yes
@@ -22,11 +22,11 @@ Auth Required: Yes
 URL: /myMessages
 Description: Retrieves the user's private messages.
 Auth Required: Yes
-**Get All Lobbies**
+4.**Get All Lobbies**
 URL: /lobbies
 Description: Retrieves a list of all lobbies.
 Auth Required: Yes
-**Get My Lobbies**
+5.**Get My Lobbies**
 URL: /mylobbies
 Description: Retrieves a list of lobbies the user is part of.
 Auth Required: Yes
